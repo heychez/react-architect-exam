@@ -15,7 +15,7 @@ app.get('/api/todos', async (req, res) => {
 });
 
 app.get('/api/todos/:id', async (req, res) => {
-    let id = req.params.id;
+    let id = Number(req.params.id);
 
     let todo = await Todo.findById(id);
     if (!todo) return res.status(404).send('Todo not found');
@@ -30,7 +30,7 @@ app.post('/api/todos', async (req, res) => {
 });
 
 app.put('/api/todos/:id', async (req, res) => {
-    let id = req.params.id;
+    let id = Number(req.params.id);
     let payload = req.body;
 
     let todo = await Todo.updateById(id, payload);
@@ -40,7 +40,7 @@ app.put('/api/todos/:id', async (req, res) => {
 });
 
 app.delete('/api/todos/:id', async (req, res) => {
-    let id = req.params.id;
+    let id = Number(req.params.id);
 
     let todo = await Todo.deleteById(id);
     if (!todo) return res.status(404).send('Todo not found');

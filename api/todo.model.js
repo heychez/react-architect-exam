@@ -20,7 +20,7 @@ module.exports.create = async (data) => {
 };
 
 module.exports.updateById = async (id, data) => {
-    let todo = todos.find(row => row.id === id);
+    let todo = todos.find(row => row.id == id);
     if (!todo) return false;
 
     Object.assign(todo, data);
@@ -28,8 +28,8 @@ module.exports.updateById = async (id, data) => {
 };
 
 module.exports.deleteById = async (id) => {
-    let idx = todos.findIndex(row => row.id === id);
-    if (idx !== -1) return false;
+    let idx = todos.findIndex(row => row.id == id);
+    if (idx == -1) return false;
 
     todos.splice(idx, 1);
     return true;

@@ -53,6 +53,14 @@ export default class App extends Component {
     });
   }
 
+  deleteTodo(evt, id) {
+    axios.delete('http://localhost:3100/api/todos/'+id).then(response => {
+      this.getTodoList();
+    }).catch( (error) => {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div className="App">
